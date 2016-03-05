@@ -31,13 +31,13 @@
   </div>
   <div class="col s12 m7 v-middle">
     <div class="card book-info">
-      <span class="card-title title">{{ book.title }}</span>
+      <span class="card-title title">{{ book.title }}</span> <button ng-click="deleteBookFromList(book.title)"> X </button>
       <div class="card-content">
         <div>Author: {{ book.author.name }}</div>
         <!-- converts slider scale of 0-100 to reactions scale of 1-5 -->
         <div ng-if="book.reaction">Your opinion: {{ reactions[book.reactionSlider/25 + 1] }} </div>
         <div ng-if="book.avgReaction">Community opinion: {{ reactions[(Math.round(book.avgReaction))] }} <span class="avg-rating">({{ book.avgReaction }}/5)</span></div>
-        <div ng-if="!book.avgReaction"><a target="_blank" href="{{ book.amz_url || 'http://amazon.com/?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&tag=rdr0a-20&linkId=PIYOGYVDVLZ2HCQZ'}}" class="be-first">Be the first to read it!</a>
+        <div ng-if="!book.avgReaction"><a target="_blank" href="{{ book.amz_url || 'http://amazon.com/?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&tag=rdr0a-20&linkId=PIYOGYVDVLZ2HCQZ'}}" class="be-first">Get this book!</a>
         </div>
         <div class="action-buttons" ng-if="!book.reaction">
           <a class="read-btn" ng-click="addToReadList(book.title, book.ISBN, book.publisher, book.high_res_image, book.large_image, book.medium_image, book.small_image, book.thumbnail_image, book.amz_url, book.author.name, book)" ng-if="book.reaction === undefined && signedIn">Add</a>
@@ -67,7 +67,7 @@
             </div>
             <div class="left slider-key" style="margin-left: -18px">{{ reactions[1] }}</div>
             <div class="right slider-key" style="margin-right: -18px">{{ reactions[5] }}</div>
-          </from>
+          </form>
         </div>
 
     </div>

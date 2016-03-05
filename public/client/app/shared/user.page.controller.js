@@ -1,6 +1,6 @@
 angular.module('booklist.user', [])
 
-.controller('UserController', ['$scope', 'Books','$rootScope', '$timeout', '$location', 'auth', function($scope, Books, $rootScope, $timeout, $location, auth){
+.controller('UserController', ['$scope', 'Books','$rootScope', '$timeout', '$location', '$http', 'auth', function($scope, Books, $rootScope, $timeout, $location, $http, auth){
   $scope.user = {};
   $scope.books = [];
   $scope.path = $location.path();
@@ -29,6 +29,22 @@ angular.module('booklist.user', [])
 
   $scope.addToReadingList = function () {
     $scope.reaction = 0;
+  };
+
+  $scope.deleteBookFromList = function (bookTitle){
+    console.log('bookTitle: ', bookTitle)
+    console.log('deleteBookFromList has been called in user.page!');
+    return $http({
+      method: 'post',
+      url: '/users/books/deleteBook',
+      data: { title: bookTitle }
+    })
+    .then(function(resp) {
+      return resp.data;
+    }, function(error) {
+      console.log(error);
+      return error;
+    });
   };
 
   $scope.setReaction = function ($event, reaction) {

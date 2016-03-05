@@ -93,6 +93,34 @@ var getBooks = function (list, limit, success, fail) {
     .catch(fail);
 };
 
+// Returns books in descending order of average reaction
+var deleteBook = function (bookTitle, user, success, fail) {
+  console.log('I made it to helpers.js!!!');
+  db.knex
+  .delete()
+  .from('books_users')
+  .where(knex.raw('books_users.book_id = books.id'))
+  .where(knex.raw('books.title = booksTitle'))
+  .then(function () {
+      console.log('success');
+      success();
+    })
+  .catch(fail);
+};
+
+
+//   db.knex
+//   .delete()
+//   .from('books_users_reactions')
+//   .where(knex.raw('books_users_reactions.books_users_id = books_users.book_id'))
+//   .where(knex.raw('books_users.book_id = books.title'))
+//   .andWhere('books.title', bookTitle)
+//   .then(function () {
+//       success();
+//     })
+//   .catch(fail);
+// };
+
 // Returns all books that have been read
 // Includes user's reaction if user's reaction exists
 var getBooksSignedIn = function (list, limit, user, success, fail) {

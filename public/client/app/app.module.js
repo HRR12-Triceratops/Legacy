@@ -35,17 +35,17 @@ angular.module('booklist.services', [])
     };
 
     var postBook = function (book, authorName, reaction){
-     return $http({
-       method: 'POST',
-       url: '/users/books',
-       data: {book: book, author: {name: authorName}, reaction: reaction}
-     })
-     .then(function(resp) {
-       return resp.data;
-     }, function(error) {
-       console.log(error);
-       return error;
-     });
+      return $http({
+        method: 'POST',
+        url: '/users/books',
+        data: {book: book, author: {name: authorName}, reaction: reaction}
+      })
+      .then(function(resp) {
+        return resp.data;
+      }, function(error) {
+        console.log(error);
+        return error;
+      });
     };
 
     var queryAmazon = function (query) {

@@ -63,6 +63,28 @@ var routes = [
     }
   },
   {
+    path: '/users/books/deleteBook',
+    post: function(req, res){
+      var bookTitle = req.body.title;
+      console.log('routes.js bookTitle', bookTitle);
+      var user = {
+        amz_auth_id: req.user.sub
+      };
+      if (!bookTitle) {
+        res.sendStatus(409);
+      } else {
+        helpers.deleteBook(bookTitle, user, 
+          function(data){
+            res.statusCode = 200;
+            res.send(data);
+          }, function(error){
+            console.error(error);
+            res.sendStatus(409);
+          });
+      }
+    },
+  },
+  {
     path: '/books',
     get: function (req, res) {
       var limit = req.param('limit');

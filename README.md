@@ -1,5 +1,4 @@
-# Rdr
-
+# Rdr 
 > A simple, streamlined application for keeping track of the books you have read and the books you want to read.
 
 ## Team

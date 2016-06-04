@@ -1,5 +1,6 @@
 # Rdr
-> A simple, streamlined application for keeping track of the books you have read and the books you want to read.
+> A simple, streamlined application for keeping track of the books you have read and the books you want to read.  
+![rdr2](https://cloud.githubusercontent.com/assets/13752714/15801372/bcd1defc-2a60-11e6-967f-165436858c11.gif)
 
 ## Team
 
